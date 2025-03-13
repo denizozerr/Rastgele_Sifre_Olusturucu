@@ -116,7 +116,7 @@ except:
     pass
 
 # Etiket ve giriş kutularını yan yana yerleştiriyoruz
-tk.Label(root, text="Kaç Harf Olsun?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=0,
+tk.Label(root, text="Kaç Harf Olsun?", font=("Calibri", 12), fg="cyan", bg="#141414", relief="solid", bd=2).grid(row=0,
                                                                                                                  column=0,
                                                                                                                  padx=5,
                                                                                                                  pady=5,
@@ -124,12 +124,12 @@ tk.Label(root, text="Kaç Harf Olsun?", font=("Calibri", 12), fg="cyan", bg="#33
 entry_letters = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_letters.grid(row=0, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Kaç Sembol Olsun?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(
+tk.Label(root, text="Kaç Sembol Olsun?", font=("Calibri", 12), fg="cyan", bg="#141414", relief="solid", bd=2).grid(
     row=1, column=0, padx=5, pady=5, sticky="e")
 entry_symbols = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_symbols.grid(row=1, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Kaç Sayı Olsun?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=2,
+tk.Label(root, text="Kaç Sayı Olsun?", font=("Calibri", 12), fg="cyan", bg="#141414", relief="solid", bd=2).grid(row=2,
                                                                                                                  column=0,
                                                                                                                  padx=5,
                                                                                                                  pady=5,
@@ -137,7 +137,7 @@ tk.Label(root, text="Kaç Sayı Olsun?", font=("Calibri", 12), fg="cyan", bg="#3
 entry_numbers = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_numbers.grid(row=2, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Dosya Adı (Masaüstü):", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(
+tk.Label(root, text="Dosya Adı (Masaüstü):", font=("Calibri", 12), fg="cyan", bg="#141414", relief="solid", bd=2).grid(
     row=3, column=0, padx=5, pady=5, sticky="e")
 entry_file_name = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_file_name.grid(row=3, column=1, padx=5, pady=5)
@@ -151,8 +151,8 @@ tk.Button(button_frame, text="Şifre Oluştur", command=generate_password, font=
 tk.Button(button_frame, text="Güncelle", command=update_password, font=("Calibri", 12), bg="blue", fg="white",
           relief="solid", bd=2).pack(side=tk.LEFT, padx=5)
 
-password_display = tk.Entry(root, font=("Calibri", 12), fg="black", bg="#f0f0f0", relief="solid",
-                            bd=2)  # Düzenlenebilir hale getirildi
+password_display = tk.Entry(root, font=("Calibri", 12), fg="black", bg="#f0f0f0", relief="solid", bd=2,
+                            width=40)  # Düzenlenebilir hale getirildi
 password_display.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
 
 tk.Button(root, text="Hakkında", command=lambda: show_about_window(root), font=("Calibri", 12), bg="#9602a1",
