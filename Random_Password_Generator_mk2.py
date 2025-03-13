@@ -15,7 +15,7 @@ def generate_password():
         nr_symbols = int(entry_symbols.get())
         nr_numbers = int(entry_numbers.get())
     except ValueError:
-        messagebox.showerror("Geçersiz giriş", "Lütfen sadece sayılar giriniz")
+        messagebox.showerror("Geçersiz giriş", "Lütfen sadece rakamlar giriniz")
         return
 
     password_list = (
@@ -28,16 +28,19 @@ def generate_password():
     password = ''.join(password_list)
 
     # Şifreyi masaüstüne kaydet
-    file_name = entry_file_name.get() or "sifre.txt"
+    file_name = entry_file_name.get().strip() or "sifre.txt"
+    if not file_name.endswith(".txt"):
+        file_name += ".txt"
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", file_name)
     with open(desktop_path, "w") as file:
         file.write(password)
 
     # Şifreyi GUI'de göster
-    password_display.config(state='normal')
     password_display.delete(0, tk.END)
     password_display.insert(0, password)
-    password_display.config(state='readonly')
+
+    # Kaydedildiğini bildiren mesaj
+    messagebox.showinfo("Başarılı", f"Şifre '{file_name}' dosyasına kaydedildi.")
 
 
 def show_about_window(parent):
@@ -116,7 +119,7 @@ entry_file_name.pack()
 
 tk.Button(root, text="Şifre Oluştur", command=generate_password).pack()
 
-password_display = tk.Entry(root, state='readonly')
+password_display = tk.Entry(root)  # Düzenlenebilir hale getirildi
 password_display.pack()
 
 tk.Button(root, text="Hakkında", command=lambda: show_about_window(root)).pack()
