@@ -94,8 +94,8 @@ root.title("Rastgele Şifre Oluşturucu")
 root.configure(bg="#333333")  # Arka plan rengini açık gri olarak ayarladık
 
 # Pencereyi ortala ve boyutlandır
-window_width = 400
-window_height = 300
+window_width = 340
+window_height = 280
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 x_position = (screen_width // 2) - (window_width // 2)
@@ -116,31 +116,28 @@ except:
     pass
 
 # Etiket ve giriş kutularını yan yana yerleştiriyoruz
-tk.Label(root, text="Kaç harf?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=0,
-                                                                                                           column=0,
-                                                                                                           padx=5,
-                                                                                                           pady=5,
-                                                                                                           sticky="e")
+tk.Label(root, text="Kaç Harf Olsun?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=0,
+                                                                                                                 column=0,
+                                                                                                                 padx=5,
+                                                                                                                 pady=5,
+                                                                                                                 sticky="e")
 entry_letters = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_letters.grid(row=0, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Kaç sembol?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=1,
-                                                                                                             column=0,
-                                                                                                             padx=5,
-                                                                                                             pady=5,
-                                                                                                             sticky="e")
+tk.Label(root, text="Kaç Sembol Olsun?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(
+    row=1, column=0, padx=5, pady=5, sticky="e")
 entry_symbols = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_symbols.grid(row=1, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Kaç sayı?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=2,
-                                                                                                           column=0,
-                                                                                                           padx=5,
-                                                                                                           pady=5,
-                                                                                                           sticky="e")
+tk.Label(root, text="Kaç Sayı Olsun?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=2,
+                                                                                                                 column=0,
+                                                                                                                 padx=5,
+                                                                                                                 pady=5,
+                                                                                                                 sticky="e")
 entry_numbers = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_numbers.grid(row=2, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Dosya adı (Masaüstü):", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(
+tk.Label(root, text="Dosya Adı (Masaüstü):", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(
     row=3, column=0, padx=5, pady=5, sticky="e")
 entry_file_name = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
 entry_file_name.grid(row=3, column=1, padx=5, pady=5)
