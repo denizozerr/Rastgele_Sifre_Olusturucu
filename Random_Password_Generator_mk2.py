@@ -79,12 +79,27 @@ def show_about_window(parent):
     about_window.grid_rowconfigure(1, weight=1)
     about_window.grid_columnconfigure(0, weight=1)
 
-    label_info = tk.Label(about_window, text="Made By Denizzr\n v.1.1",
-                          font=("Calibri", 12), fg="white", bg="#1C1C1C", justify="center", wraplength=280)
-    label_info.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+    label_info = tk.Label(about_window,
+                         text="Bu uygulama rastgele şifre oluşturmak için tasarlanmıştır.\n\n"
+                              "Şifre oluşturmak için harf, sembol ve sayı giriniz.\n\n"
+                              "Oluşturulan şifreye ekleme veya çıkarma yapmak için güncelle butonuna tıklayınız.\n\n"
+                              "Oluşturulan şifreler masaüstüne kaydedilir.\n\n"
+                              "Made By Denizzr\n"
+                              "v.1.1",
+                         font=("Calibri", 12),
+                         fg="white",
+                         bg="#1C1C1C",
+                         justify="center",
+                         wraplength=280)
+    label_info.grid(row=0, column=0, padx=15, pady=15, sticky="nsew")
+
+    # Pencere boyutunu artır
+    window_width = 400  # Genişliği artır
+    window_height = 400 # Yüksekliği artır
+    about_window.geometry(f"{window_width}x{window_height}")
 
     close_button = tk.Button(about_window, text="Kapat", command=about_window.destroy,
-                             font=("Calibri", 10), bg="red", fg="white", width=10, height=2)
+                             font=("Calibri", 12), bg="red", fg="white", width=12, height=2)
     close_button.grid(row=1, column=0, pady=10)
 
 
