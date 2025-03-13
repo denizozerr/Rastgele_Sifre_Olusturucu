@@ -27,7 +27,15 @@ def generate_password():
     random.shuffle(password_list)
     password = ''.join(password_list)
 
+    # Şifreyi GUI'de göster
+    password_display.delete(0, tk.END)
+    password_display.insert(0, password)
+
     # Şifreyi masaüstüne kaydet
+    save_password(password)
+
+
+def save_password(password):
     file_name = entry_file_name.get().strip() or "sifre.txt"
     if not file_name.endswith(".txt"):
         file_name += ".txt"
@@ -35,12 +43,17 @@ def generate_password():
     with open(desktop_path, "w") as file:
         file.write(password)
 
-    # Şifreyi GUI'de göster
-    password_display.delete(0, tk.END)
-    password_display.insert(0, password)
-
     # Kaydedildiğini bildiren mesaj
     messagebox.showinfo("Başarılı", f"Şifre '{file_name}' dosyasına kaydedildi.")
+
+
+def update_password():
+    # Mevcut şifreyi al ve kaydet
+    current_password = password_display.get()
+    if current_password:
+        save_password(current_password)
+    else:
+        messagebox.showwarning("Uyarı", "Güncellenecek bir şifre yok.")
 
 
 def show_about_window(parent):
@@ -66,7 +79,7 @@ def show_about_window(parent):
     about_window.grid_rowconfigure(1, weight=1)
     about_window.grid_columnconfigure(0, weight=1)
 
-    label_info = tk.Label(about_window, text="Made By Denizzr\n v.1.7",
+    label_info = tk.Label(about_window, text="Made By Denizzr\n v.1.1",
                           font=("Calibri", 12), fg="white", bg="#1C1C1C", justify="center", wraplength=280)
     label_info.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
@@ -78,6 +91,7 @@ def show_about_window(parent):
 # GUI setup
 root = tk.Tk()
 root.title("Rastgele Şifre Oluşturucu")
+root.configure(bg="#333333")  # Arka plan rengini açık gri olarak ayarladık
 
 # Pencereyi ortala ve boyutlandır
 window_width = 400
@@ -101,27 +115,50 @@ try:
 except:
     pass
 
-tk.Label(root, text="Kaç harf?").pack()
-entry_letters = tk.Entry(root)
-entry_letters.pack()
+# Etiket ve giriş kutularını yan yana yerleştiriyoruz
+tk.Label(root, text="Kaç harf?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=0,
+                                                                                                           column=0,
+                                                                                                           padx=5,
+                                                                                                           pady=5,
+                                                                                                           sticky="e")
+entry_letters = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
+entry_letters.grid(row=0, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Kaç sembol?").pack()
-entry_symbols = tk.Entry(root)
-entry_symbols.pack()
+tk.Label(root, text="Kaç sembol?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=1,
+                                                                                                             column=0,
+                                                                                                             padx=5,
+                                                                                                             pady=5,
+                                                                                                             sticky="e")
+entry_symbols = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
+entry_symbols.grid(row=1, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Kaç sayı?").pack()
-entry_numbers = tk.Entry(root)
-entry_numbers.pack()
+tk.Label(root, text="Kaç sayı?", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(row=2,
+                                                                                                           column=0,
+                                                                                                           padx=5,
+                                                                                                           pady=5,
+                                                                                                           sticky="e")
+entry_numbers = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
+entry_numbers.grid(row=2, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Dosya adı (Masaüstü):").pack()
-entry_file_name = tk.Entry(root)
-entry_file_name.pack()
+tk.Label(root, text="Dosya adı (Masaüstü):", font=("Calibri", 12), fg="cyan", bg="#333333", relief="solid", bd=2).grid(
+    row=3, column=0, padx=5, pady=5, sticky="e")
+entry_file_name = tk.Entry(root, font=("Calibri", 12), fg="black", bg="white", relief="solid", bd=2)
+entry_file_name.grid(row=3, column=1, padx=5, pady=5)
 
-tk.Button(root, text="Şifre Oluştur", command=generate_password).pack()
+# Butonları yan yana yerleştirmek için bir Frame kullanıyoruz
+button_frame = tk.Frame(root, bg="#333333")
+button_frame.grid(row=4, column=0, columnspan=2, pady=10)
 
-password_display = tk.Entry(root)  # Düzenlenebilir hale getirildi
-password_display.pack()
+tk.Button(button_frame, text="Şifre Oluştur", command=generate_password, font=("Calibri", 12), bg="green", fg="white",
+          relief="solid", bd=2).pack(side=tk.LEFT, padx=5)
+tk.Button(button_frame, text="Güncelle", command=update_password, font=("Calibri", 12), bg="blue", fg="white",
+          relief="solid", bd=2).pack(side=tk.LEFT, padx=5)
 
-tk.Button(root, text="Hakkında", command=lambda: show_about_window(root)).pack()
+password_display = tk.Entry(root, font=("Calibri", 12), fg="black", bg="#f0f0f0", relief="solid",
+                            bd=2)  # Düzenlenebilir hale getirildi
+password_display.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
+
+tk.Button(root, text="Hakkında", command=lambda: show_about_window(root), font=("Calibri", 12), bg="#9602a1",
+          fg="white", relief="solid", bd=2).grid(row=6, column=0, columnspan=2, pady=10)
 
 root.mainloop()
