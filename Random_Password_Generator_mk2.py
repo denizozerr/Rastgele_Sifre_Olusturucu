@@ -170,7 +170,14 @@ password_display = tk.Entry(root, font=("Calibri", 12), fg="black", bg="#f0f0f0"
                             width=40)  # Düzenlenebilir hale getirildi
 password_display.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
 
-tk.Button(root, text="Hakkında", command=lambda: show_about_window(root), font=("Calibri", 12), bg="#9602a1",
-          fg="white", relief="solid", bd=2).grid(row=6, column=0, columnspan=2, pady=10)
+# Hakkında butonu ve imza etiketini yan yana yerleştirmek için bir Frame kullanıyoruz
+info_frame = tk.Frame(root, bg="#333333")
+info_frame.grid(row=6, column=0, columnspan=2, pady=10)
+
+tk.Button(info_frame, text="Hakkında", command=lambda: show_about_window(root), font=("Calibri", 12), bg="#9602a1",
+          fg="white", relief="solid", bd=2).pack(side=tk.LEFT, padx=5)
+
+label_imza = tk.Label(info_frame, text="Made By Denizzr \n v.1.1", font=("Calibri", 10, "italic"), fg="magenta", bg="#1C1C1C")
+label_imza.pack(side=tk.LEFT, padx=5)
 
 root.mainloop()
