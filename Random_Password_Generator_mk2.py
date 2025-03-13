@@ -177,7 +177,7 @@ info_frame.grid(row=6, column=0, columnspan=2, pady=10)
 tk.Button(info_frame, text="Hakkında", command=lambda: show_about_window(root), font=("Calibri", 12), bg="#9602a1",
           fg="white", relief="solid", bd=2).pack(side=tk.LEFT, padx=5)
 
-label_imza = tk.Label(info_frame, text="Made By Denizzr \n v.1.1", font=("Calibri", 10, "italic"), fg="magenta", bg="#1C1C1C")
+label_imza = tk.Label(info_frame, text="Made By Denizzr \n v.1.2", font=("Calibri", 10, "italic"), fg="magenta", bg="#1C1C1C")
 label_imza.pack(side=tk.LEFT, padx=5)
 
 root.mainloop()
